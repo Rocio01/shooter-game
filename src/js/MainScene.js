@@ -17,6 +17,25 @@ class MainScene extends Phaser.Scene {
     this.add.existing(this.myPlayer);
   }
 
+  update() {
+    if (this.cursors.left.isDown) {
+        this.myPlayer.moveLeft();
+    }
+
+    if (this.cursors.right.isDown) {
+        this.myPlayer.moveRight();
+    }
+
+    if (this.cursors.up.isDown) {
+        this.myPlayer.moveUp();
+    }
+
+    if (this.cursors.down.isDown) {
+        this.myPlayer.moveDown();
+    }
+
+}
+
  
   
 }
