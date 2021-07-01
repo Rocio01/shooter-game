@@ -1,4 +1,3 @@
-
 class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y);
@@ -6,36 +5,48 @@ class Player extends Phaser.GameObjects.Sprite {
     this.setPosition(x, y);
     this.deltaX = 5;
     this.deltaY = 5;
+    this.lasers = [];
+    this.laserLastshot = new Date().getTime();
+    this.laserFrecuency = 200;
   }
+
   moveLeft() {
     if (this.x > 0) {
-        this.x -= this.deltaX;
+      this.x -= this.deltaX;
     }
-}
+  }
 
   moveRight() {
-      if (this.x < 800) {
-          this.x += this.deltaX;
-      }
+    if (this.x < 800) {
+      this.x += this.deltaX;
+    }
   }
 
   moveUp() {
-      if (this.y > 0) {
-          this.y -= this.deltaY;
-      }
+    if (this.y > 0) {
+      this.y -= this.deltaY;
+    }
   }
 
   moveDown() {
-
-      if (this.y < 600) {
-          this.y += this.deltaY;
-      }
+    if (this.y < 600) {
+      this.y += this.deltaY;
+    }
   }
 
   preUpdate(time, delta) {
-      super.preUpdate(time, delta);
+    super.preUpdate(time, delta);
   }
 
+  letFire() {
+    let currentTime = new Date().getTime();
+    if (currentTime - this.laserLastshot > this.laserFrecuency) {
+      let myPlayerLaser = new PlayerLaser(this.scene, this.x, this.y);
+      this.scene.add.existing(myPlayerLaser);
+      this.lasers.push(myPlayerLaser);
+      this.laserLastshot = currentTime;
+    }
+  }
 }
 
-export {Player}
+export { Player };

@@ -8,6 +8,11 @@ class PlayerLaser extends Phaser.GameObjects.Sprite {
     scene.physics.world.enable(this);
   }
 
-
+  preUpdate(time, delta) {
+    if (this.active == false) {
+      return;
+    }
+    super.preUpdate(time, delta);
+    this.y -= this.speed;
+  }
 }
-
