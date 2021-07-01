@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { MainScene } from './js/MainScene';
+import { MainScene } from './js/MainScene.js';
 
 const config = {
     type: Phaser.AUTO,
