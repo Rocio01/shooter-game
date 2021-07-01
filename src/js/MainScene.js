@@ -7,7 +7,7 @@ class MainScene extends Phaser.Scene {
 
   preload() {
     this.load.image("blue", "src/assets/Background/blue.jpg");
-    this.load.image("player", "./src/assets/player/Squid-icon.png")
+    this.load.image("player", "src/assets/player/Squid-icon1.png")
   }
 
   create() {
