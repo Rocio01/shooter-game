@@ -1,3 +1,4 @@
+import { PlayerLaser } from "./PlayerLaser";
 class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y);
@@ -36,6 +37,19 @@ class Player extends Phaser.GameObjects.Sprite {
 
   preUpdate(time, delta) {
     super.preUpdate(time, delta);
+    let cleanLasers = [];
+
+    for ( let i= 0; i < this.lasers.length; i ++){
+      if (this.lasers[i].y <= 0) {
+        cleanLasers.push(this.lasers[i]);
+      }
+    }
+
+    for ( let i= 0; i< cleanLasers.length; i++) {
+      let index = this.lasers.indexOf(cleanLasers[i]);
+      this.lasers.splice(index, 1);
+      cleanLasers[i].destroy();
+    }
   }
 
   letFire() {

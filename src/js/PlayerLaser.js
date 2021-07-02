@@ -16,3 +16,5 @@ class PlayerLaser extends Phaser.GameObjects.Sprite {
     this.y -= this.speed;
   }
 }
+
+export {PlayerLaser}

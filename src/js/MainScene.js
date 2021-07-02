@@ -8,6 +8,7 @@ class MainScene extends Phaser.Scene {
   preload() {
     this.load.image('blue', 'src/assets/Background/blue.jpg');
     this.load.image('player', 'src/assets/player/Squid-icon1.png');
+    this.load.image("laser" , "src/assets/Lasers/laserGreen14.png")
   }
 
   create() {
@@ -32,6 +33,10 @@ class MainScene extends Phaser.Scene {
 
     if (this.cursors.down.isDown) {
       this.myPlayer.moveDown();
+    }
+
+    if(this.cursors.space.isDown) {
+      this.myPlayer.letFire();
     }
   }
 }
