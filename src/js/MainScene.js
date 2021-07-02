@@ -8,7 +8,9 @@ class MainScene extends Phaser.Scene {
   preload() {
     this.load.image('blue', 'src/assets/Background/blue.jpg');
     this.load.image('player', 'src/assets/player/Squid-icon1.png');
-    this.load.image("laser" , "src/assets/Lasers/laserGreen14.png")
+    this.load.image('laser', 'src/assets/Lasers/laserGreen14.png');
+    this.load.image('animal', 'src/assets/random-ocean-mix/jellyfish-n.png');
+   
   }
 
   create() {
@@ -16,6 +18,11 @@ class MainScene extends Phaser.Scene {
     this.add.image(400, 300, 'blue');
     this.myPlayer = new Player(this, 400, 500);
     this.add.existing(this.myPlayer);
+    this.rect = new Phaser.Geom.Rectangle(0, 0, 800, 800);
+    this.group = this.add.group({ key: 'animal', frameQuantity: 20 });
+  
+    Phaser.Actions.RandomRectangle(this.group.getChildren(), this.rect);
+    
   }
 
   update() {
@@ -35,9 +42,14 @@ class MainScene extends Phaser.Scene {
       this.myPlayer.moveDown();
     }
 
-    if(this.cursors.space.isDown) {
+    if (this.cursors.space.isDown) {
       this.myPlayer.letFire();
     }
+    this.children = this.group.getChildren();
+
+    Phaser.Actions.IncXY(this.children, 1, 1);
+    Phaser.Actions.WrapInRectangle(this.children, this.rect);
+   
   }
 }
 

@@ -17,4 +17,4 @@ class PlayerLaser extends Phaser.GameObjects.Sprite {
   }
 }
 
-export {PlayerLaser}
+export { PlayerLaser };
