@@ -1,4 +1,5 @@
 import { Player } from './Player';
+import { Enemy } from './Enemy';
 
 class MainScene extends Phaser.Scene {
   // constructor(config) {
@@ -10,6 +11,7 @@ class MainScene extends Phaser.Scene {
     this.load.image('player', 'src/assets/player/Squid-icon1.png');
     this.load.image('laser', 'src/assets/Lasers/laserGreen14.png');
     this.load.image('animal', 'src/assets/random-ocean-mix/jellyfish-n.png');
+    this.load.image("enemy", "src/assets/enemies/Trash-Can-icon.png")
    
   }
 
