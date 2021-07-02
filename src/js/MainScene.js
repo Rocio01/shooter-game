@@ -11,7 +11,7 @@ class MainScene extends Phaser.Scene {
     this.load.image('player', 'src/assets/player/Squid-icon1.png');
     this.load.image('laser', 'src/assets/Lasers/laserGreen14.png');
     this.load.image('animal', 'src/assets/random-ocean-mix/jellyfish-n.png');
-    this.load.image("enemy", "src/assets/enemies/Trash-Can-icon.png")
+    this.load.image("enemy", "src/assets/enemies/Trash-Can-icon1.png")
    
   }
 
@@ -24,6 +24,20 @@ class MainScene extends Phaser.Scene {
     this.group = this.add.group({ key: 'animal', frameQuantity: 20 });
   
     Phaser.Actions.RandomRectangle(this.group.getChildren(), this.rect);
+    this.enemies = this.physics.add.group();
+    this.enemies2 = new Array();
+
+   
+    for (let i = 0; i < 10; i++) {
+        let x = Math.random() * 800;
+        let y = Math.random() * 400;
+
+        this.enemy = new Enemy(this, x, y);
+        this.add.existing(this.enemy);
+        this.enemies.add(this.enemy);
+        this.enemies2.push(this.enemy);
+    }
+
     
   }
 
@@ -51,6 +65,12 @@ class MainScene extends Phaser.Scene {
 
     Phaser.Actions.IncXY(this.children, 1, 1);
     Phaser.Actions.WrapInRectangle(this.children, this.rect);
+    
+    for (let i = 0; i < this.enemies2.length; i++) {
+        let enemy = this.enemies2[i];
+        enemy.update();
+    }
+   
    
   }
 }
