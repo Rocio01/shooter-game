@@ -1,11 +1,13 @@
+
 class Enemy extends Phaser.GameObjects.Sprite {
-  constructor(scene, x, y) {
+  constructor(scene, x, y ) {
     super(scene, x, y);
     this.setTexture('enemy');
     this.setPosition(x, y);
     scene.physics.world.enable(this);
     this.gameObject = this;
     this.deltaX = 50;
+ 
 
 }
 update() {
