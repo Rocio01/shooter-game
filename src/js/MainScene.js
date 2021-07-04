@@ -1,5 +1,6 @@
 import { Player } from './Player';
 import { Enemy } from './Enemy';
+import {BigEnemy} from "./BigEnemy";
 
 class MainScene extends Phaser.Scene {
   // constructor(config) {
@@ -10,8 +11,10 @@ class MainScene extends Phaser.Scene {
     this.load.image('blue', 'src/assets/Background/blue.jpg');
     this.load.image('player', 'src/assets/player/Squid-icon1.png');
     this.load.image('laser', 'src/assets/Lasers/laserGreen14.png');
+    this.load.image("laser1", "src/assets/Lasers/laserRed04.png")
     this.load.image('animal', 'src/assets/random-ocean-mix/jellyfish-n.png');
-    this.load.image("enemy", "src/assets/enemies/Trash-Can-icon3.png")
+    this.load.image("enemy", "src/assets/enemies/Trash-Can-icon3.png");
+    this.load.image("bigenemy", "src/assets/enemies/Trash-Full-icon.png" )
    
   }
 
@@ -25,8 +28,8 @@ class MainScene extends Phaser.Scene {
   
     Phaser.Actions.RandomRectangle(this.group.getChildren(), this.rect);
     this.enemies = this.physics.add.group();
-    this.enemies2 = new Array();
-    this.enemyLasers = this.add.group();
+    this.enemies2 = [];
+    
 
    
     for (let i = 0; i < 20; i++) {
@@ -36,10 +39,15 @@ class MainScene extends Phaser.Scene {
         this.enemy = new Enemy(this, x, y);
         this.add.existing(this.enemy);
         this.enemies.add(this.enemy);
-        this.enemies2.push(this.enemy);
+        this.enemies2.push(this.enemy);        
     }
 
-    
+    this.myBigEnemy1 = new BigEnemy(this, 100, 100);
+    this.add.existing(this.myBigEnemy1);
+   
+    this.myBigEnemy2 = new BigEnemy(this, 200, 400);
+    this.add.existing(this.myBigEnemy2);
+
   }
 
   update() {
@@ -61,6 +69,8 @@ class MainScene extends Phaser.Scene {
 
     if (this.cursors.space.isDown) {
       this.myPlayer.letFire();
+      
+      
     }
     this.children = this.group.getChildren();
 
@@ -71,6 +81,8 @@ class MainScene extends Phaser.Scene {
         let enemy = this.enemies2[i];
         enemy.update();
     }
+    this.myBigEnemy1.fireEnemyLasers()
+   
     
   }
 }
