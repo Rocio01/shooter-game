@@ -10,7 +10,7 @@ class MainScene extends Phaser.Scene {
     this.load.image('laser', 'src/assets/Lasers/laserGreen14.png');
     this.load.image('laser1', 'src/assets/Lasers/laserRed04.png');
     this.load.image('animal', 'src/assets/random-ocean-mix/jellyfish-n.png');
-    this.load.image('enemy', 'src/assets/enemies/trash-icon1.png');
+    this.load.image('enemy', 'src/assets/enemies/trash-icon2.png');
     this.load.image('bigenemy', 'src/assets/enemies/Daft-Punk-Thomas-Human-icon.png');
   }
 
@@ -28,7 +28,7 @@ class MainScene extends Phaser.Scene {
     this.player1.add(this.myPlayer);
     this.enemies2 = [];
 
-    for (let i = 0; i < 10; i += 1) {
+    for (let i = 0; i < 20; i += 1) {
       const x = Math.random() * 800;
       const y = Math.random() * 400;
 
@@ -42,8 +42,9 @@ class MainScene extends Phaser.Scene {
     this.bigEnemies2 = [];
 
     for (let i = 0; i < 3; i += 1) {
-      const x = Math.random() * 800;
-      const y = Math.random() * 400;
+      
+      const x = Math.random() * 750;
+      const y = Math.random() * 300;
 
       this.bigEnemy = new BigEnemy(this, x, y);
 
