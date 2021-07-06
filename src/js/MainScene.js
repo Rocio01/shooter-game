@@ -27,16 +27,22 @@ class MainScene extends Phaser.Scene {
     this.player1 = this.physics.add.group();
     this.player1.add(this.myPlayer);
     this.enemies2 = [];
+    
+    
+      for (let i = 0; i < 2; i += 1) {
+        const x = Math.random() * 800;
+        const y = Math.random() * 400;
+  
+        this.enemy = new Enemy(this, x, y);
+        
+        this.add.existing(this.enemy);
+        this.enemies.add(this.enemy);
+        this.enemies2.push(this.enemy);
+      
+        
+      }
+    
 
-    for (let i = 0; i < 20; i += 1) {
-      const x = Math.random() * 800;
-      const y = Math.random() * 400;
-
-      this.enemy = new Enemy(this, x, y);
-      this.add.existing(this.enemy);
-      this.enemies.add(this.enemy);
-      this.enemies2.push(this.enemy);
-    }
 
     this.bigEnemies = this.physics.add.group();
     this.bigEnemies2 = [];
@@ -57,6 +63,7 @@ class MainScene extends Phaser.Scene {
   update() {
     if (!(this.myPlayer.body) === true) {
       this.scene.pause();
+      this.scene.start('game-over')
     }
 
     if (this.cursors.left.isDown) {
@@ -91,6 +98,7 @@ class MainScene extends Phaser.Scene {
       const bigEnemy = this.bigEnemies2[i];
       bigEnemy.fireEnemyLasers();
     }
+  
   }
 }
 

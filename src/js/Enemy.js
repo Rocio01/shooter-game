@@ -9,6 +9,12 @@ class Enemy extends Phaser.GameObjects.Sprite {
     this.gameObject = this;
     this.deltaX = 50;
     scene = this.scene;
+    scene.physics.world.enable(this);
+    this.hit = (enemy, player) => {
+      enemy.setTint(0xff0000);
+      player.destroy();
+    };
+    scene.physics.add.collider(this, scene.player1, this.hit, null, this);
   }
 
   update() {
