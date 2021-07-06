@@ -10,6 +10,7 @@ class Player extends Phaser.GameObjects.Sprite {
     this.lasers = [];
     this.laserLastshot = new Date().getTime();
     this.laserFrecuency = 200;
+ 
   }
 
   moveLeft() {

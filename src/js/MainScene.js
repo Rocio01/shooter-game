@@ -3,9 +3,9 @@ import { Enemy } from './Enemy';
 import {BigEnemy} from "./BigEnemy";
 
 class MainScene extends Phaser.Scene {
-  // constructor(config) {
-  //   super(config);
-  // }
+  constructor(config) {
+    super(config);
+  }
 
   preload() {
     this.load.image('blue', 'src/assets/Background/blue.jpg');
@@ -13,8 +13,8 @@ class MainScene extends Phaser.Scene {
     this.load.image('laser', 'src/assets/Lasers/laserGreen14.png');
     this.load.image("laser1", "src/assets/Lasers/laserRed04.png")
     this.load.image('animal', 'src/assets/random-ocean-mix/jellyfish-n.png');
-    this.load.image("enemy", "src/assets/enemies/Trash-Can-icon3.png");
-    this.load.image("bigenemy", "src/assets/enemies/Trash-Full-icon.png" )
+    this.load.image("enemy", "src/assets/enemies/trash-icon1.png");
+    this.load.image("bigenemy", "src/assets/enemies/Daft-Punk-Thomas-Human-icon.png" )
    
   }
 
@@ -25,12 +25,12 @@ class MainScene extends Phaser.Scene {
     this.add.existing(this.myPlayer);
     this.rect = new Phaser.Geom.Rectangle(0, 0, 800, 800);
     this.group = this.add.group({ key: 'animal', frameQuantity: 20 });
-  
+    
     Phaser.Actions.RandomRectangle(this.group.getChildren(), this.rect);
     this.enemies = this.physics.add.group();
+    this.player1 = this.physics.add.group();
+    this.player1.add(this.myPlayer);
     this.enemies2 = [];
-    
-
    
     for (let i = 0; i < 20; i++) {
         let x = Math.random() * 800;
@@ -39,14 +39,25 @@ class MainScene extends Phaser.Scene {
         this.enemy = new Enemy(this, x, y);
         this.add.existing(this.enemy);
         this.enemies.add(this.enemy);
-        this.enemies2.push(this.enemy);        
+        this.enemies2.push(this.enemy);
+        
     }
+  
+    this.bigEnemies = this.physics.add.group();
+    this.bigEnemies2 = [];
+    
+    for (let i = 0; i < 3; i++) {
+        let x = Math.random() * 800;
+        let y = Math.random() * 400;
 
-    this.myBigEnemy1 = new BigEnemy(this, 100, 100);
-    this.add.existing(this.myBigEnemy1);
-   
-    this.myBigEnemy2 = new BigEnemy(this, 200, 400);
-    this.add.existing(this.myBigEnemy2);
+        this.bigEnemy = new BigEnemy(this, x, y);
+        
+        this.add.existing(this.bigEnemy);
+        this.bigEnemies.add(this.bigEnemy);
+        this.bigEnemies2.push(this.bigEnemy);
+        
+    }
+  
 
   }
 
@@ -68,8 +79,7 @@ class MainScene extends Phaser.Scene {
     }
 
     if (this.cursors.space.isDown) {
-      this.myPlayer.letFire();
-      
+      this.myPlayer.letFire();      
       
     }
     this.children = this.group.getChildren();
@@ -81,10 +91,19 @@ class MainScene extends Phaser.Scene {
         let enemy = this.enemies2[i];
         enemy.update();
     }
-    this.myBigEnemy1.fireEnemyLasers()
+    for (let i = 0; i < this.bigEnemies2.length; i++) {
+      let bigEnemy = this.bigEnemies2[i];
+      bigEnemy.fireEnemyLasers();
+  }
+    
    
+
     
   }
+
+
+
+
 }
 
 export { MainScene };

@@ -8,6 +8,9 @@ class EnemyLaser extends Phaser.GameObjects.Sprite {
     this.speed = 10;
     this.scene = scene;
     scene.physics.world.enable(this);
+    scene.physics.add.collider(this, scene.player1, this.handleHit, null, this);
+ 
+     
   }
 
   preUpdate(time, delta) {
@@ -16,7 +19,17 @@ class EnemyLaser extends Phaser.GameObjects.Sprite {
     }
     super.preUpdate(time, delta);
     this.y += this.speed;
+
   }
+
+  handleHit(laser, player) {  
+   
+   laser.destroy();
+   player.setTint(0xff0000);
+  }
+    
+
+
 }
 
 export { EnemyLaser };

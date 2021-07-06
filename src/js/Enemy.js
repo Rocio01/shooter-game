@@ -7,7 +7,8 @@ class Enemy extends Phaser.GameObjects.Sprite {
     scene.physics.world.enable(this);
     this.gameObject = this;
     this.deltaX = 50;
- 
+    scene = this.scene;
+     
 
 }
 update() {
@@ -20,6 +21,8 @@ update() {
       else if (randomNumber == 70) {
           this.moveRight();
       }
+
+      
 
   }
 
@@ -49,7 +52,6 @@ update() {
   }
    
 
-  
 }
 
 export {Enemy}
