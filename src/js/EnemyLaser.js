@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 class EnemyLaser extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y);
@@ -8,7 +10,11 @@ class EnemyLaser extends Phaser.GameObjects.Sprite {
     this.speed = 10;
     this.scene = scene;
     scene.physics.world.enable(this);
-    scene.physics.add.collider(this, scene.player1, this.handleHit, null, this);
+    this.hit = (laser, player) => {
+      laser.destroy();
+      player.destroy();
+    };
+    scene.physics.add.collider(this, scene.player1, this.hit, null, this);
   }
 
   preUpdate(time, delta) {
@@ -18,11 +24,6 @@ class EnemyLaser extends Phaser.GameObjects.Sprite {
     super.preUpdate(time, delta);
     this.y += this.speed;
   }
-
-  handleHit(laser, player) {
-    laser.destroy();
-    player.destroy();
-  }
 }
 
-export { EnemyLaser as default };
+export default EnemyLaser;

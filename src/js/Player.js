@@ -1,4 +1,6 @@
-import { PlayerLaser } from './PlayerLaser';
+import Phaser from 'phaser';
+
+import PlayerLaser from './PlayerLaser';
 
 class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
@@ -64,4 +66,4 @@ class Player extends Phaser.GameObjects.Sprite {
   }
 }
 
-export { Player as default };
+export default Player;

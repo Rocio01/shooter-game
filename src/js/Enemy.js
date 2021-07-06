@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 class Enemy extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y);
@@ -45,4 +47,4 @@ class Enemy extends Phaser.GameObjects.Sprite {
   }
 }
 
-export { Enemy as default };
+export default Enemy;

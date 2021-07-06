@@ -1,12 +1,9 @@
-import { Player } from './Player';
-import { Enemy } from './Enemy';
-import { BigEnemy } from './BigEnemy';
+import Phaser from 'phaser';
+import Player from './Player';
+import Enemy from './Enemy';
+import BigEnemy from './BigEnemy';
 
 class MainScene extends Phaser.Scene {
-  constructor(config) {
-    super(config);
-  }
-
   preload() {
     this.load.image('blue', 'src/assets/Background/blue.jpg');
     this.load.image('player', 'src/assets/player/Squid-icon1.png');
@@ -31,7 +28,7 @@ class MainScene extends Phaser.Scene {
     this.player1.add(this.myPlayer);
     this.enemies2 = [];
 
-    for (let i = 0; i < 20; i += 1) {
+    for (let i = 0; i < 10; i += 1) {
       const x = Math.random() * 800;
       const y = Math.random() * 400;
 
@@ -96,4 +93,4 @@ class MainScene extends Phaser.Scene {
   }
 }
 
-export { MainScene };
+export default MainScene;

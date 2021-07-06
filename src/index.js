@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { MainScene } from './js/MainScene';
+import MainScene from './js/MainScene';
 
 const config = {
   type: Phaser.AUTO,
@@ -8,13 +8,11 @@ const config = {
   height: 600,
   physics: {
     default: 'arcade',
-
-  //   arcade: {
-  //     // gravity: { y: 5 },
-  //     debug: false
-  // }
   },
+  scene: [
+    MainScene,
+  ],
 };
 
-const game = new Phaser.Game(config);
-game.scene.add('MainScene', MainScene, true, { x: 400, y: 300 });
+
+window.game = new Phaser.Game(config);

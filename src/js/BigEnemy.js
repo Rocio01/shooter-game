@@ -1,4 +1,6 @@
-import { EnemyLaser } from './EnemyLaser';
+import Phaser from 'phaser';
+
+import EnemyLaser from './EnemyLaser';
 
 class BigEnemy extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
@@ -42,4 +44,4 @@ class BigEnemy extends Phaser.GameObjects.Sprite {
   }
 }
 
-export { BigEnemy as default };
+export default BigEnemy;
