@@ -10,7 +10,7 @@ class PlayerLaser extends Phaser.GameObjects.Sprite {
   }
 
   preUpdate(time, delta) {
-    if (this.active == false) {
+    if (this.active === false) {
       return;
     }
     super.preUpdate(time, delta);
@@ -18,10 +18,9 @@ class PlayerLaser extends Phaser.GameObjects.Sprite {
   }
 
   handleHit(laserSprite, enemySprite) {
-
     enemySprite.destroy(true);
     laserSprite.destroy(true);
-}
+  }
 }
 
 export { PlayerLaser };

@@ -10,7 +10,6 @@ class Player extends Phaser.GameObjects.Sprite {
     this.lasers = [];
     this.laserLastshot = new Date().getTime();
     this.laserFrecuency = 200;
- 
   }
 
   moveLeft() {
@@ -41,13 +40,13 @@ class Player extends Phaser.GameObjects.Sprite {
     super.preUpdate(time, delta);
     const cleanLasers = [];
 
-    for (let i = 0; i < this.lasers.length; i++) {
+    for (let i = 0; i < this.lasers.length; i += 1) {
       if (this.lasers[i].y <= 0) {
         cleanLasers.push(this.lasers[i]);
       }
     }
 
-    for (let i = 0; i < cleanLasers.length; i++) {
+    for (let i = 0; i < cleanLasers.length; i += 1) {
       const index = this.lasers.indexOf(cleanLasers[i]);
       this.lasers.splice(index, 1);
       cleanLasers[i].destroy();
@@ -65,4 +64,4 @@ class Player extends Phaser.GameObjects.Sprite {
   }
 }
 
-export { Player };
+export { Player as default };

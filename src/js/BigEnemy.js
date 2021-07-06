@@ -14,36 +14,32 @@ class BigEnemy extends Phaser.GameObjects.Sprite {
     scene.physics.world.enable(this);
   }
 
-
   preUpdate(time, delta) {
-    super.preUpdate(time, delta);    
+    super.preUpdate(time, delta);
     const lasersToRemove = [];
 
-    for (let i = 0; i < this.enemylasers.length; i++) {
-        if (this.enemylasers[i].y <= 0) {
-            lasersToRemove.push(this.enemylasers[i]);
-        }
+    for (let i = 0; i < this.enemylasers.length; i += 1) {
+      if (this.enemylasers[i].y <= 0) {
+        lasersToRemove.push(this.enemylasers[i]);
+      }
     }
 
-    for (let i = 0; i < lasersToRemove.length; i++) {
-        var laserIndex = this.enemylasers.indexOf(lasersToRemove[i]);
-        this.enemylasers.splice(laserIndex, 1);
-        lasersToRemove[i].destroy();
+    for (let i = 0; i < lasersToRemove.length; i += 1) {
+      const laserIndex = this.enemylasers.indexOf(lasersToRemove[i]);
+      this.enemylasers.splice(laserIndex, 1);
+      lasersToRemove[i].destroy();
     }
-}
+  }
 
   fireEnemyLasers() {
-    let currentTime = new Date().getTime();
+    const currentTime = new Date().getTime();
     if (currentTime - this.lastShot > this.shotFrequency) {
-        let enemyLaser = new EnemyLaser(this.scene, this.x, this.y);
-        this.scene.add.existing(enemyLaser);
-        this.enemylasers.push(enemyLaser);
-        this.lastShot = currentTime;
+      const enemyLaser = new EnemyLaser(this.scene, this.x, this.y);
+      this.scene.add.existing(enemyLaser);
+      this.enemylasers.push(enemyLaser);
+      this.lastShot = currentTime;
     }
-    }
-
-
-
+  }
 }
 
-export {BigEnemy}
+export { BigEnemy as default };

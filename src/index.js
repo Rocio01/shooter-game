@@ -8,7 +8,7 @@ const config = {
   height: 600,
   physics: {
     default: 'arcade',
-    
+
   //   arcade: {
   //     // gravity: { y: 5 },
   //     debug: false
