@@ -82,7 +82,7 @@ class PreloaderScene extends Phaser.Scene {
     this.load.image('laser', 'src/assets/Lasers/laserGreen14.png');
     this.load.image('laser1', 'src/assets/Lasers/laserRed04.png');
     this.load.image('animal', 'src/assets/random-ocean-mix/jellyfish-n.png');
-    this.load.image('enemy', 'src/assets/enemies/trash-icon2.png');
+    this.load.image('enemy', 'src/assets/enemies/trash-icon4.png');
     this.load.image('bigenemy', 'src/assets/enemies/Daft-Punk-Thomas-Human-icon.png');
   }
 
