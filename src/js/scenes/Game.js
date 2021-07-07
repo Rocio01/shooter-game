@@ -15,6 +15,8 @@ class Game extends Phaser.Scene {
     this.add.existing(this.myPlayer);
     this.rect = new Phaser.Geom.Rectangle(0, 0, 800, 800);
     this.group = this.add.group({ key: 'animal', frameQuantity: 20 });
+    this.score = 0;
+    this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
     Phaser.Actions.RandomRectangle(this.group.getChildren(), this.rect);
     this.enemies = this.physics.add.group();
@@ -49,7 +51,7 @@ class Game extends Phaser.Scene {
   }
 
   update() {
-    if (!(this.myPlayer.body) === true) {
+    if ((!(this.myPlayer.body) === true) || (this.score === 300)  ) {
       this.scene.start('game-over');
     }
 
