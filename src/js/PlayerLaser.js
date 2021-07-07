@@ -12,7 +12,7 @@ class PlayerLaser extends Phaser.GameObjects.Sprite {
       enemySprite.destroy(true);
       laserSprite.destroy(true);
       scene.score += 10;
-      scene.scoreText.setText('Score: ' + scene.score);
+      scene.scoreText.setText(`Score: ${scene.score}`);
     };
     scene.physics.add.collider(this, scene.enemies, this.hit, undefined, this);
   }
