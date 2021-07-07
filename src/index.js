@@ -1,6 +1,8 @@
 import Phaser from 'phaser';
-import MainScene from './js/MainScene';
-import GameOverScene from './js/GameOverScene';
+import BootScene from './js/scenes/BootScene';
+import PreloaderScene from './js/scenes/Preloader';
+import Game from './js/scenes/Game';
+import GameOverScene from './js/scenes/GameOverScene';
 
 const config = {
   type: Phaser.AUTO,
@@ -11,10 +13,11 @@ const config = {
     default: 'arcade',
   },
   scene: [
-    MainScene,
-    GameOverScene
+    BootScene,
+    PreloaderScene,
+    Game,
+    GameOverScene,
   ],
 };
-
 
 window.game = new Phaser.Game(config);
