@@ -1,12 +1,12 @@
 import Phaser from 'phaser';
 
- class PreloaderScene extends Phaser.Scene {
+class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
   }
 
   init() {
-     this.readyCount = 0;
+    this.readyCount = 0;
   }
 
   preload() {
@@ -51,7 +51,6 @@ import Phaser from 'phaser';
     });
     assetText.setOrigin(0.5, 0.5);
 
-  
     this.load.on('progress', (value) => {
       // eslint-disable-next-line
       percentText.setText(`${parseInt(value * 100)}%`);
@@ -60,12 +59,10 @@ import Phaser from 'phaser';
       progressBar.fillRect(250, 280, 300 * value, 30);
     });
 
-    
     this.load.on('fileprogress', (file) => {
       assetText.setText(`Loading asset: ${file.key}`);
     });
 
-  
     this.load.on(
       'complete',
       () => {
@@ -80,7 +77,7 @@ import Phaser from 'phaser';
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-    this.load.image("logo", "src/assets/Background/wave.jpg")
+    this.load.image('logo', 'src/assets/Background/wave.jpg');
     this.load.image('blue', 'src/assets/Background/blue.jpg');
     this.load.image('player', 'src/assets/player/Squid-icon1.png');
     this.load.image('laser', 'src/assets/Lasers/laserGreen14.png');
@@ -88,7 +85,6 @@ import Phaser from 'phaser';
     this.load.image('animal', 'src/assets/random-ocean-mix/jellyfish-n.png');
     this.load.image('enemy', 'src/assets/enemies/trash-icon2.png');
     this.load.image('bigenemy', 'src/assets/enemies/Daft-Punk-Thomas-Human-icon.png');
-
   }
 
   ready() {

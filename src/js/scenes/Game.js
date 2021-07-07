@@ -4,18 +4,8 @@ import Enemy from '../Enemy';
 import BigEnemy from '../BigEnemy';
 
 class Game extends Phaser.Scene {
-
   constructor() {
     super('game');
-  }
-  preload() {
-    // this.load.image('blue', 'src/assets/Background/blue.jpg');
-    // this.load.image('player', 'src/assets/player/Squid-icon1.png');
-    // this.load.image('laser', 'src/assets/Lasers/laserGreen14.png');
-    // this.load.image('laser1', 'src/assets/Lasers/laserRed04.png');
-    // this.load.image('animal', 'src/assets/random-ocean-mix/jellyfish-n.png');
-    // this.load.image('enemy', 'src/assets/enemies/trash-icon2.png');
-    // this.load.image('bigenemy', 'src/assets/enemies/Daft-Punk-Thomas-Human-icon.png');
   }
 
   create() {
