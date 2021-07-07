@@ -1,17 +1,11 @@
 import Phaser from 'phaser';
-import Player from './Player';
-import Enemy from './Enemy';
-import BigEnemy from './BigEnemy';
+import Player from '../Player';
+import Enemy from '../Enemy';
+import BigEnemy from '../BigEnemy';
 
-class MainScene extends Phaser.Scene {
-  preload() {
-    this.load.image('blue', 'src/assets/Background/blue.jpg');
-    this.load.image('player', 'src/assets/player/Squid-icon1.png');
-    this.load.image('laser', 'src/assets/Lasers/laserGreen14.png');
-    this.load.image('laser1', 'src/assets/Lasers/laserRed04.png');
-    this.load.image('animal', 'src/assets/random-ocean-mix/jellyfish-n.png');
-    this.load.image('enemy', 'src/assets/enemies/trash-icon2.png');
-    this.load.image('bigenemy', 'src/assets/enemies/Daft-Punk-Thomas-Human-icon.png');
+class Game extends Phaser.Scene {
+  constructor() {
+    super('game');
   }
 
   create() {
@@ -21,34 +15,30 @@ class MainScene extends Phaser.Scene {
     this.add.existing(this.myPlayer);
     this.rect = new Phaser.Geom.Rectangle(0, 0, 800, 800);
     this.group = this.add.group({ key: 'animal', frameQuantity: 20 });
+    this.score = 0;
+    this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
     Phaser.Actions.RandomRectangle(this.group.getChildren(), this.rect);
     this.enemies = this.physics.add.group();
     this.player1 = this.physics.add.group();
     this.player1.add(this.myPlayer);
     this.enemies2 = [];
-    
-    
-      for (let i = 0; i < 2; i += 1) {
-        const x = Math.random() * 800;
-        const y = Math.random() * 400;
-  
-        this.enemy = new Enemy(this, x, y);
-        
-        this.add.existing(this.enemy);
-        this.enemies.add(this.enemy);
-        this.enemies2.push(this.enemy);
-      
-        
-      }
-    
 
+    for (let i = 0; i < 30; i += 1) {
+      const x = Math.random() * 800;
+      const y = Math.random() * 400;
+
+      this.enemy = new Enemy(this, x, y);
+
+      this.add.existing(this.enemy);
+      this.enemies.add(this.enemy);
+      this.enemies2.push(this.enemy);
+    }
 
     this.bigEnemies = this.physics.add.group();
     this.bigEnemies2 = [];
 
     for (let i = 0; i < 3; i += 1) {
-      
       const x = Math.random() * 750;
       const y = Math.random() * 300;
 
@@ -61,9 +51,8 @@ class MainScene extends Phaser.Scene {
   }
 
   update() {
-    if (!(this.myPlayer.body) === true) {
-      this.scene.pause();
-      this.scene.start('game-over')
+    if ((!(this.myPlayer.body) === true) || (this.score === 300)) {
+      this.scene.start('game-over');
     }
 
     if (this.cursors.left.isDown) {
@@ -98,8 +87,7 @@ class MainScene extends Phaser.Scene {
       const bigEnemy = this.bigEnemies2[i];
       bigEnemy.fireEnemyLasers();
     }
-  
   }
 }
 
-export default MainScene;
+export default Game;
