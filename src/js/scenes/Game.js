@@ -22,7 +22,7 @@ class Game extends Phaser.Scene {
     this.player1.add(this.myPlayer);
     this.enemies2 = [];
 
-    for (let i = 0; i < 2; i += 1) {
+    for (let i = 0; i < 30; i += 1) {
       const x = Math.random() * 800;
       const y = Math.random() * 400;
 

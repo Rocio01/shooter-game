@@ -10,7 +10,6 @@ class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    this.add.image(400, 300, 'logo');
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
@@ -77,7 +76,7 @@ class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-    this.load.image('logo', 'src/assets/Background/wave.jpg');
+    this.load.image('ocean', 'src/assets/Background/ocean.jpg');
     this.load.image('blue', 'src/assets/Background/blue.jpg');
     this.load.image('player', 'src/assets/player/Squid-icon1.png');
     this.load.image('laser', 'src/assets/Lasers/laserGreen14.png');
@@ -88,7 +87,7 @@ class PreloaderScene extends Phaser.Scene {
   }
 
   ready() {
-    this.scene.start('game');
+    this.scene.start('title');
   }
 }
 

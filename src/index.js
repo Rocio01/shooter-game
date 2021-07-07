@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import BootScene from './js/scenes/BootScene';
 import PreloaderScene from './js/scenes/Preloader';
+import TitleScene from './js/scenes/Title';
 import Game from './js/scenes/Game';
 import GameOverScene from './js/scenes/GameOverScene';
 
@@ -15,6 +16,7 @@ const config = {
   scene: [
     BootScene,
     PreloaderScene,
+    TitleScene,
     Game,
     GameOverScene,
   ],
