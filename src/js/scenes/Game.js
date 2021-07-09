@@ -56,7 +56,7 @@ class Game extends Phaser.Scene {
 
   update() {
     if ((!(this.myPlayer.body) === true) || (this.score === 300)) {
-      this.scene.start('game-over');
+      this.scene.start('game-over', {score: this.score});
     }
 
     if (this.cursors.left.isDown) {
