@@ -13,6 +13,9 @@ const config = {
   physics: {
     default: 'arcade',
   },
+  dom: {
+    createContainer: true
+},
   scene: [
     BootScene,
     PreloaderScene,
